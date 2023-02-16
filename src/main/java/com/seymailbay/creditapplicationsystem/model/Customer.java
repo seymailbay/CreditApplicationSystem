@@ -4,19 +4,15 @@ package com.seymailbay.creditapplicationsystem.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="customers")
+@Table(name="customer")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long customerID;
+    private Long customerID;
 
     @Column(name = "turkishRepublicId",nullable =false,unique = true,length = 11, updatable = false)
     private String turkishRepublicID;
@@ -28,18 +24,62 @@ public class Customer {
     private String surname;
 
     @Column(name="salary",nullable = false)
-    private BigDecimal salary;
+    private double salary;
 
     @Column(name="phone",nullable = false,length = 10)
-    private int phone;
+    private String phone;
 
     @Column(name="dateOfBirth",nullable = false)
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
-    @Column(name="amountofGuarantee")
-    private BigDecimal amountOfGuarantee;
+    @Column(name="amountofGuarantee",nullable = true)
+    private double amountOfGuarantee;
 
-    public Customer(long customerID, String turkishRepublicID, String name, String surname, BigDecimal salary, int phone, Date dateOfBirth, BigDecimal amountOfGuarantee) {
+    @Column(name="creditScore",nullable = true)
+    private int creditScore;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Credit credit;
+
+    public Customer(String turkishRepublicID, String name, String surname, double salary, String phone, String dateOfBirth, double amountOfGuarantee, int creditScore) {
+        this.turkishRepublicID = turkishRepublicID;
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.phone = phone;
+        this.dateOfBirth = dateOfBirth;
+        this.amountOfGuarantee = amountOfGuarantee;
+        this.creditScore = creditScore;
+    }
+
+    public Customer(String turkishRepublicID, String name, String surname, double salary, String phone, String dateOfBirth) {
+        this.turkishRepublicID = turkishRepublicID;
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.phone = phone;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+
+
+    //     (new Customer(customerCreateDto.getCustomerID(),customerCreateDto.getTurkishRepublicId(),
+    //                        customerCreateDto.getName(),
+    //                        customerCreateDto.getSurname(),
+    //                        customerCreateDto.getSalary(),
+    //                        customerCreateDto.getPhone(),
+    //                        customerCreateDto.getDateOfBirth(),
+    //                        customerCreateDto.getAmountOfGuarantee(),
+    //                        customerCreateDto.getCreditScore()));
+
+    public Customer(Long customerID,
+                    String turkishRepublicID,
+                    String name, String surname,
+                    double salary, String phone,
+                    String dateOfBirth, double amountOfGuarantee,
+                    int creditScore,Credit credit) {
         this.customerID = customerID;
         this.turkishRepublicID = turkishRepublicID;
         this.name = name;
@@ -48,16 +88,7 @@ public class Customer {
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.amountOfGuarantee = amountOfGuarantee;
+        this.creditScore = creditScore;
+        this.credit=credit;
     }
-
-    public Customer(long customerID, String turkishRepublicID, String name, String surname, BigDecimal salary, int phone, Date dateOfBirth) {
-        this.customerID = customerID;
-        this.turkishRepublicID = turkishRepublicID;
-        this.name = name;
-        this.surname = surname;
-        this.salary = salary;
-        this.phone = phone;
-        this.dateOfBirth = dateOfBirth;
-    }
-
 }

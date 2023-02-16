@@ -1,10 +1,11 @@
 package com.seymailbay.creditapplicationsystem.service.customerService;
 
-import com.seymailbay.creditapplicationsystem.dto.customer.CustomerCreateDto;
-import com.seymailbay.creditapplicationsystem.dto.customer.CustomerUpdateDto;
-import com.seymailbay.creditapplicationsystem.dto.customer.CustomerViewDto;
+import com.seymailbay.creditapplicationsystem.dto.customerDto.CustomerCreateDto;
+import com.seymailbay.creditapplicationsystem.dto.customerDto.CustomerUpdateDto;
+import com.seymailbay.creditapplicationsystem.dto.customerDto.CustomerViewDto;
+import jakarta.validation.Valid;
+
 import java.util.*;
-import com.seymailbay.creditapplicationsystem.model.Customer;
 
 public interface CustomerService {
 
@@ -12,7 +13,7 @@ public interface CustomerService {
 
     CustomerViewDto createCustomer(CustomerCreateDto customerCreateDto);
 
-    CustomerViewDto updateCustomer(CustomerUpdateDto customerUpdateDto);
+    CustomerViewDto updateCustomer(Long id, CustomerUpdateDto customerUpdateDto);
 
     void deleteCustomer(Long id);
 

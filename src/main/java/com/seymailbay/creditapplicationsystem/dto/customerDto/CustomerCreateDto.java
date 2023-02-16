@@ -1,5 +1,6 @@
-package com.seymailbay.creditapplicationsystem.dto.customer;
+package com.seymailbay.creditapplicationsystem.dto.customerDto;
 
+import com.seymailbay.creditapplicationsystem.model.Credit;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -10,8 +11,11 @@ import java.util.Date;
 @Data
 public class CustomerCreateDto {
 
+    @NotNull(message = "")
+    private Long customerID;
+
     @NotNull(message = "{backend.constraints.turkish_republicId.notNull.message}")
-    @Size(min = 11,max=11,message = "{backend.constraints.turkish_republicId.Size.message}")
+    //@Size(min = 11,max=11,message = "{backend.constraints.turkish_republicId.Size.message}")
     private String turkishRepublicId;
 
     @NotNull(message = "{backend.constraints.first_name.notNull.message}")
@@ -21,13 +25,17 @@ public class CustomerCreateDto {
     private String surname;
 
     @NotNull(message = "{backend.constraints.salary.notNull.message}")
-    private BigDecimal salary;
+    private double salary;
 
     @NotNull(message = "{backend.constraints.phone.notNull.message}")
-    private int phone;
+    private String phone;
 
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
-    private BigDecimal amountOfGuarantee;
+    private double amountOfGuarantee;
+
+    private int creditScore;
+
+    private Credit credit;
 
 }
