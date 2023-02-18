@@ -19,9 +19,9 @@ public class CustomerViewDto implements Serializable {
     private String phone;
     private String dateOfBirth;
     private double amountOfGuarantee;
-    private int creditScore;
+    private double creditScore;
 
-    public CustomerViewDto(Long customerID, String turkishRepublicId, String name, String surname, double salary,String phone, String dateOfBirth, double amountOfGuarantee, int creditScore) {
+    public CustomerViewDto(Long customerID, String turkishRepublicId, String name, String surname, double salary,String phone, String dateOfBirth, double amountOfGuarantee, double creditScore) {
         this.customerId=customerID;
         this.turkishRepublicId = turkishRepublicId;
         this.name = name;

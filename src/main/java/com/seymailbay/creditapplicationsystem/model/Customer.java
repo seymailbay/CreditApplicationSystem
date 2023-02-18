@@ -36,13 +36,13 @@ public class Customer {
     private double amountOfGuarantee;
 
     @Column(name="creditScore",nullable = true)
-    private int creditScore;
+    private double creditScore;
 
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Credit credit;
 
-    public Customer(String turkishRepublicID, String name, String surname, double salary, String phone, String dateOfBirth, double amountOfGuarantee, int creditScore) {
+    public Customer(String turkishRepublicID, String name, String surname, double salary, String phone, String dateOfBirth, double amountOfGuarantee, double creditScore) {
         this.turkishRepublicID = turkishRepublicID;
         this.name = name;
         this.surname = surname;
