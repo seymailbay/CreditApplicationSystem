@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.SpringMP</groupId>
-    <artifactId>SpringMP</artifactId>
+    <groupId>com.seyma</groupId>
+    <artifactId>seyma</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringMP</name>
-    <description>SpringMP</description>
+    <name>seyma</name>
+    <description>seyma</description>
 
     <properties>
         <java.version>17</java.version>
